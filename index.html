@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Invited! 🎉</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f0f4f8; /* A clean, solid background color */
+        }
+
+        /* Custom animation for the button */
+        .animated-button {
+            background-size: 200% 100%;
+            background-image: linear-gradient(to right, #a855f7, #ec4899, #a855f7);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .animated-button:hover {
+            background-position: right center;
+        }
+
+        /* Keyframes for the turbulent liquid animation */
+        @keyframes liquid {
+            0% {
+                filter: url(#liquid-filter);
+            }
+            100% {
+                filter: url(#liquid-filter-animated);
+            }
+        }
+
+        /* Apply the animation to the new liquid background div */
+        .liquid-background {
+            animation: liquid 15s infinite alternate ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, #f4e8ff, #e6f0ff);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 sm:p-6 md:p-8 relative">
+    
+    <!-- SVG for the liquid filter effect (hidden from view) -->
+    <svg class="absolute top-0 left-0 w-0 h-0">
+        <defs>
+            <filter id="liquid-filter">
+                <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1" result="turbulence" />
+                <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="50" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+            <filter id="liquid-filter-animated">
+                <feTurbulence type="fractalNoise" baseFrequency="0.015 0.01" numOctaves="1" result="turbulence" />
+                <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="70" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- The new liquid gradient background div -->
+    <div class="liquid-background"></div>
+
+    <!-- Invitation Card -->
+    <div class="w-full max-w-sm p-6 sm:p-8 md:p-10 bg-white rounded-3xl shadow-2xl text-center space-y-6 transform transition-transform duration-500 hover:scale-105 relative z-10">
+        <!-- Main Heading -->
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-800">
+            You're Invited!
+        </h1>
+        <!-- Subheading -->
+        <p class="text-xl sm:text-2xl font-semibold text-pink-600">
+            To a Birthday Party!
+        </p>
+
+        <!-- Birthday Details Section -->
+        <div class="bg-gradient-to-r from-pink-500 to-purple-600 p-4 rounded-xl shadow-lg">
+            <p class="text-white text-lg font-medium">For</p>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                Shaurya's Birthday!
+            </h2>
+        </div>
+
+        <!-- Party Details -->
+        <div class="text-gray-700 space-y-4 text-center">
+            <div class="space-y-2">
+                <p class="text-lg font-semibold">Date:</p>
+                <p class="text-2xl font-bold text-purple-600">FRIDAY, 26th Sep</p>
+                <p class="text-sm font-light">(My birthday is on the 25th, but we're celebrating on the 26th!)</p>
+            </div>
+            
+            <div class="space-y-2">
+                <p class="text-lg font-semibold">Time:</p>
+                <p class="text-2xl font-bold text-purple-600">6:00 PM onwards</p>
+            </div>
+            
+            <div class="space-y-2">
+                <p class="text-lg font-semibold">Location:</p>
+                <p class="text-xl font-bold text-gray-800">My House</p>
+                <p class="text-base text-gray-500 font-light italic">Details will be shared in the group chat.</p>
+            </div>
+        </div>
+        
+        <!-- RSVP Button -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_z8u0PfRSFUPx_SEq0kD4NFkw9-uCfZE9j8vwglzefHFtzQ/viewform?usp=header" target="_blank" role="button" class="inline-block w-full px-6 py-3 mt-6 text-white font-bold text-lg rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl animated-button">
+            Click to Confirm
+        </a>
+
+        <!-- After Party Note -->
+        <div class="bg-yellow-200 text-yellow-800 p-3 rounded-xl shadow-inner font-semibold">
+            After the party, get ready for a sleepover! 🌙
+        </div>
+        
+    </div>
+</body>
+</html>
